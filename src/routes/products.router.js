@@ -1,11 +1,13 @@
+const path = require('path');
 const express = require("express");
 const router = express.Router();
-const ProductManager = require('../product-manager.js');
+const ProductManager = require('../controllers/product-manager.js');
 
-
-// Crea una instancia de ProductManager
-const productManager = new ProductManager('/productos.json');
-
+// Obtener la ruta completa al archivo productos.json desde el punto donde se ejecuta este script
+const productosJsonPath = path.join(__dirname, '..', '/models/products.json');
+//console.log(productosJsonPath)
+// Crea una instancia de ProductManager con la ruta correcta
+const productManager = new ProductManager(productosJsonPath);
 
 // Endpoint para obtener todos los productos con posibilidad de limitar resultados
 router.get('/', async (req, res) => {

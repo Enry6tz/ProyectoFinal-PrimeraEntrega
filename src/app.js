@@ -14,7 +14,9 @@ app.use(express.urlencoded({extended: true}))
 app.use("/api/products", productsRouter )
 app.use("/api/carts", cartsRouter )
 
-
+app.get("/",(req, res)=> res.send("HOME"))
+app.get("/home", (req,res) => res.send("HOME"))
+app.get("/*", (req,res) => res.send("pagina no encontrada"))
 // Inicia el servidor y escucha en el puerto especificado
 app.listen(PUERTO, () => {
   console.log(`Servidor escuchando en el puerto ${PUERTO}`);

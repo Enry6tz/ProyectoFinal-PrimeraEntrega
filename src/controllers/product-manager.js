@@ -6,12 +6,14 @@ class ProductManager {
   static ultId = 0;
 
   constructor(path) {
+
     // Inicializa el array de productos y la ruta del archivo
-    this.products = [];
     this.path = path;
+    this.products = path ? this.leerArchivo() : [ ];
     // Inicializa la instancia, cargando productos desde el archivo
     this.initialize();
-  }
+    
+    }
 
   // Método para inicializar la instancia, cargando productos desde el archivo
   async initialize() {
