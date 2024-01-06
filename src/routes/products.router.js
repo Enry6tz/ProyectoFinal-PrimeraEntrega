@@ -2,6 +2,7 @@ const path = require('path');
 const express = require("express");
 const router = express.Router();
 const ProductManager = require('../controllers/product-manager.js');
+const { route } = require('./carts.router.js');
 
 // Obtener la ruta completa al archivo productos.json desde el punto donde se ejecuta este script
 const productosJsonPath = path.join(__dirname, '..', '/models/products.json');
@@ -42,5 +43,16 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.post("",(req,res)=>{
+  //agrega productos al products-manager
+})
+
+router.put("/:id",(req,res)=>{
+  //actualizar producto por id
+})
+
+router.delete("/:id" ,(req, res ) => {
+  //eliminar producto por id
+})
 
 module.exports = router;
