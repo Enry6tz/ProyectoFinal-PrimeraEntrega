@@ -1,92 +1,167 @@
 [
-    {
-      "id": 1,
-      "title": "Producto 1",
-      "description": "Descripción del Producto 1",
-      "price": 19.99,
-      "thumbnail": "img1.jpg",
-      "code": "P001",
-      "stock": 50
-    },
-    {
-      "id": 2,
-      "title": "Producto 2",
-      "description": "Descripción del Producto 2",
-      "price": 29.99,
-      "thumbnail": "img2.jpg",
-      "code": "P002",
-      "stock": 30
-    },
-    {
-      "id": 3,
-      "title": "Producto 3",
-      "description": "Descripción del Producto 3",
-      "price": 39.99,
-      "thumbnail": "img3.jpg",
-      "code": "P003",
-      "stock": 20
-    },
-    {
-      "id": 4,
-      "title": "Producto 4",
-      "description": "Descripción del Producto 4",
-      "price": 49.99,
-      "thumbnail": "img4.jpg",
-      "code": "P004",
-      "stock": 15
-    },
-    {
-      "id": 5,
-      "title": "Producto 5",
-      "description": "Descripción del Producto 5",
-      "price": 59.99,
-      "thumbnail": "img5.jpg",
-      "code": "P005",
-      "stock": 25
-    },
-    {
-      "id": 6,
-      "title": "Producto 6",
-      "description": "Descripción del Producto 6",
-      "price": 69.99,
-      "thumbnail": "img6.jpg",
-      "code": "P006",
-      "stock": 10
-    },
-    {
-      "id": 7,
-      "title": "Producto 7",
-      "description": "Descripción del Producto 7",
-      "price": 79.99,
-      "thumbnail": "img7.jpg",
-      "code": "P007",
-      "stock": 40
-    },
-    {
-      "id": 8,
-      "title": "Producto 8",
-      "description": "Descripción del Producto 8",
-      "price": 89.99,
-      "thumbnail": "img8.jpg",
-      "code": "P008",
-      "stock": 5
-    },
-    {
-      "id": 9,
-      "title": "Producto 9",
-      "description": "Descripción del Producto 9",
-      "price": 99.99,
-      "thumbnail": "img9.jpg",
-      "code": "P009",
-      "stock": 35
-    },
-    {
-      "id": 10,
-      "title": "Producto 10",
-      "description": "Descripción del Producto 10",
-      "price": 109.99,
-      "thumbnail": "img10.jpg",
-      "code": "P010",
-      "stock": 12
-    }
-  ]
+  {
+    "id": 2,
+    "title": "Producto 2",
+    "description": "Descripción del producto 2",
+    "price": 29.99,
+    "thumbnails": [
+      "url4",
+      "url5",
+      "url6"
+    ],
+    "code": "P002",
+    "stock": 30,
+    "cartegoty": "Ropa",
+    "status": "Agotado"
+  },
+  {
+    "id": 3,
+    "title": "Producto 3",
+    "description": "Descripción del producto 3",
+    "price": 49.99,
+    "thumbnails": [
+      "url7",
+      "url8",
+      "url9"
+    ],
+    "code": "P003",
+    "stock": 100,
+    "cartegoty": "Hogar",
+    "status": "Disponible"
+  },
+  {
+    "id": 4,
+    "title": "Producto 4",
+    "description": "Descripción del producto 4",
+    "price": 39.99,
+    "thumbnails": [
+      "url10",
+      "url11",
+      "url12"
+    ],
+    "code": "P004",
+    "stock": 20,
+    "cartegoty": "Juguetes",
+    "status": "Disponible"
+  },
+  {
+    "id": 5,
+    "title": "Producto 5",
+    "description": "Descripción del producto 5",
+    "price": 59.99,
+    "thumbnails": [
+      "url13",
+      "url14",
+      "url15"
+    ],
+    "code": "P005",
+    "stock": 75,
+    "cartegoty": "Electrodomésticos",
+    "status": "Agotado"
+  },
+  {
+    "id": 6,
+    "title": "Producto 6",
+    "description": "Descripción del producto 6",
+    "price": 24.99,
+    "thumbnails": [
+      "url16",
+      "url17",
+      "url18"
+    ],
+    "code": "P006",
+    "stock": 10,
+    "cartegoty": "Deportes",
+    "status": "Disponible"
+  },
+  {
+    "id": 7,
+    "title": "Producto 7",
+    "description": "Descripción del producto 7",
+    "price": 34.99,
+    "thumbnails": [
+      "url19",
+      "url20",
+      "url21"
+    ],
+    "code": "P007",
+    "stock": 50,
+    "cartegoty": "Libros",
+    "status": "Agotado"
+  },
+  {
+    "id": 8,
+    "title": "Producto 8",
+    "description": "Descripción del producto 8",
+    "price": 44.99,
+    "thumbnails": [
+      "url22",
+      "url23",
+      "url24"
+    ],
+    "code": "P008",
+    "stock": 15,
+    "cartegoty": "Moda",
+    "status": "Disponible"
+  },
+  {
+    "id": 9,
+    "title": "Producto 9",
+    "description": "Descripción del producto 9",
+    "price": 54.99,
+    "thumbnails": [
+      "url25",
+      "url26",
+      "url27"
+    ],
+    "code": "P009",
+    "stock": 40,
+    "cartegoty": "Música",
+    "status": "Agotado"
+  },
+  {
+    "id": 10,
+    "title": "Producto 10",
+    "description": "Descripción del producto 10",
+    "price": 29.99,
+    "thumbnails": [
+      "url28",
+      "url29",
+      "url30"
+    ],
+    "code": "P010",
+    "stock": 60,
+    "cartegoty": "Herramientas",
+    "status": "Disponible"
+  },
+  {
+    "id": 11,
+    "title": "Producto 11",
+    "description": "Descripción del producto 11",
+    "price": 19.99,
+    "thumbnails": [
+      "url31",
+      "url32",
+      "url33"
+    ],
+    "code": "P011",
+    "stock": 25,
+    "cartegoty": "Muebles",
+    "status": "Disponible"
+  },
+  {
+    "id": 12,
+    "title": "Producto 12",
+    "description": "Descripción del producto 12",
+    "price": 39.99,
+    "thumbnails": [
+      "url34",
+      "url35",
+      "url36"
+    ],
+    "code": "P012",
+    "stock": 45,
+    "cartegoty": "Jardín",
+    "status": "Agotado"
+  }
+]

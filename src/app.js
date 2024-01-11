@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // Crea una instancia de Express
 const app = express();
@@ -9,6 +10,7 @@ const cartsRouter = require("./routes/carts.router");
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+app.use(bodyParser.json());
 
 //Routing
 app.use("/api/products", productsRouter )

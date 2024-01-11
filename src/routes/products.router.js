@@ -43,16 +43,36 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post("",(req,res)=>{
+router.post("/",async (req,res)=>{
   //agrega productos al products-manager
-})
+  try {
+    const producto = req.body;
+    await productManager.addProduct(producto);
+    res.status(200).json({ mensaje: 'Producto agregado correctamente' }); // Devuelve un objeto JSON
+  } catch (error) {
+    res.status(500).json({ error: 'Error al agregar producto' });
+  }
+});
 
-router.put("/:id",(req,res)=>{
-  //actualizar producto por id
-})
+router.put("/:id",async (req,res)=>{
+  try {
+    const id = req.params.id;
+    const newObject = req.body;
+    await productManager.updateProduct(id, newObject)
+    res.json({ mensaje: 'Objeto actualizado con éxito'});
+  } catch (error) { 
+    res.status(404).json({ error: 'id no encontrado' });
+  }
+});
 
-router.delete("/:id" ,(req, res ) => {
-  //eliminar producto por id
-})
+router.delete("/:id" , async (req, res ) => {
+  try {
+    const id = req.params.id;
+    await productManager.deleteProduct(id)
+    res.json({ mensaje: 'Objeto actualizado con éxito'});
+  } catch (error) { 
+    res.status(404).json({ error: 'Objeto no encontrado' });
+  }
+});
 
 module.exports = router;

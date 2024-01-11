@@ -37,12 +37,29 @@ router.get('/:id', async (req, res) => {
     res.status(404).json({ error: 'carrito no encontrado' });
   }
 });
-router.post("/", (req,res)=> {
-  //crear nuevo carrito
+router.post("/", async (req,res)=> {
+  // Crea nuevo carrito
+   try {
+    await cartsManager.addProduct();
+    res.status(200).json({ mensaje: "carrito creado con exito" }); 
+  } catch (error) {
+    res.status(500).json({ error: 'Error al crear el carrito' });
+
+  }
 })
 
-router.post("/:cid/product/:pid", (req,res)=> {
+router.post("/:cid/product/:pid", async (req,res)=> {
   //agregar un producto al carrito con el id seleccionado.
+  const cartId= parseInt(req.params.cid);
+  const productId = req.params.pid;
+  const quantity = req.params.quantity || 1
+  try {
+    const update  = await cartsManager.updateProduct(cartId, productId,quantity)
+    res.json(update.products)
+  }catch(error){
+    console.error("Error al agregar producto al carrito", error)
+    res.status(500).json({error: "error en el servidor"});
+  }
 })
 
 module.exports = router;

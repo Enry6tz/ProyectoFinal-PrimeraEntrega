@@ -36,8 +36,8 @@ class CartManager {
   async addProduct() {
     // Crear nuevo carrito con id autoincrementable
     const newCart = {
-      id: ++ProductManager.ultId,
-      arrayProducts :[],
+      id: ++CartManager.ultId,
+      products: [],
     };
     // Agregar producto al array
     this.products.push(newCart);
@@ -52,10 +52,11 @@ getProducts() {
   return this.products;
 }
 
-  // Método para obtener un producto por su id
-  async getProductById(id) {
+  // Método para obtener un carrito por su id
+async getProductById(id) {
     try {
       const arrayProductos = await this.leerArchivo();
+      id = parseInt(id);
       const buscado = arrayProductos.find(item => item.id === id);
 
       if (!buscado) {
@@ -69,45 +70,23 @@ getProducts() {
     }
   }
 
-  // Método para actualizar un producto por su id
-  async updateProduct(id, productoActualizado) {
-    try {
-      const arrayProductos = await this.leerArchivo();
+  //agrega un producto al array de productos del carrito seleccionado 
+  async updateProduct(cartId, productId, quantity=1) {
+    const cart = await this.getProductById(parseInt(cartId));
+    const product = cart.products.find(p => p.id === productId)
 
-      const index = arrayProductos.findIndex(item => item.id === id);
-
-      if (index !== -1) {
-        // Utilizo el método de array splice para reemplazar el objeto en la posición del index
-        arrayProductos.splice(index, 1, productoActualizado);
-        await this.guardarArchivo(arrayProductos);
-        console.log("Producto actualizado:", productoActualizado);
+    
+      if (product) {
+        product.quantity += quantity
       } else {
-        console.log("No se encontró el producto");
+        cart.products.push({id: productId,quantity})
       }
-    } catch (error) {
-      console.log("Error al actualizar el producto", error);
-    }
+
+      await this.guardarArchivo();
+      return cart;
   }
 
-  // Método para eliminar un producto por su id
-  async deleteProduct(id) {
-    try {
-      const arrayProductos = await this.leerArchivo();
 
-      const index = arrayProductos.findIndex(item => item.id === id);
-
-      if (index !== -1) {
-        // Utilizo el método de array splice para eliminar el objeto en la posición del index
-        arrayProductos.splice(index, 1);
-        await this.guardarArchivo(arrayProductos);
-        console.log("Producto eliminado satisfactoriamente");
-      } else {
-        console.log("No se encontró el producto");
-      }
-    } catch (error) {
-      console.log("Error al eliminar el producto", error);
-    }
-  }
 
   // Método para leer el archivo
   async leerArchivo() {

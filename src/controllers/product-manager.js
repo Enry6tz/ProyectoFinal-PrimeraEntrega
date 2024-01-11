@@ -34,14 +34,16 @@ class ProductManager {
   }
   // Método para agregar un nuevo producto al array y guardar en el archivo
   async addProduct(nuevoObjeto) {
-    let { title, description, price, img, code, stock } = nuevoObjeto;
-
+    let { title, description, price, thumbnails, code, stock, cartegoty, status } = nuevoObjeto;
+    
     // Validaciones
-    if (![title, description, price, img, code, stock].every(Boolean)) {
+    if (![title, description, price, code, stock, cartegoty, status].every(Boolean)) {
       console.error("Todos los campos son obligatorios");
       return;
     }
-
+    if(!thumbnails){
+      thumbnails="";
+    }
     if (this.products.some(item => item.code === code)) {
       console.error("El código debe ser único");
       return;
@@ -52,10 +54,12 @@ class ProductManager {
       id: ++ProductManager.ultId,
       title,
       description,
-      price,
-      img,
       code,
-      stock
+      price,
+      status, 
+      stock,
+      cartegoty,
+      thumbnails,
     };
 
     // Agregar producto al array
@@ -113,9 +117,9 @@ getProducts() {
   async deleteProduct(id) {
     try {
       const arrayProductos = await this.leerArchivo();
-
+      id = parseInt(id)
       const index = arrayProductos.findIndex(item => item.id === id);
-
+     
       if (index !== -1) {
         // Utilizo el método de array splice para eliminar el objeto en la posición del index
         arrayProductos.splice(index, 1);
