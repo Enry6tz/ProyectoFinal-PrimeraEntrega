@@ -79,7 +79,6 @@ async getProductById(id) {
       if (quantity) {
         product.quantity += parseInt(quantity);
       } else {
-        // No es necesario verificar si 'quantity' existe aquí, ya que ya lo has hecho arriba
         cart.products.push({
           "id": productId,
           "quantity": parseInt(quantity)
@@ -90,7 +89,7 @@ async getProductById(id) {
       return cart.products;
     } else {
       console.log("Producto no encontrado en el carrito");
-      return null;  // Puedes manejar este caso según tus necesidades
+      return null;  
     }
   }
 
