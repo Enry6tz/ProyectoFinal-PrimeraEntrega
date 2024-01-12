@@ -48,18 +48,20 @@ router.post("/", async (req,res)=> {
   }
 })
 
-router.post("/:cid/product/:pid", async (req,res)=> {
-  //agregar un producto al carrito con el id seleccionado.
-  const cartId= parseInt(req.params.cid);
-  const productId = req.params.pid;
-  const quantity = req.params.quantity || 1
+router.post("/:cid/product/:pid", async (req, res) => {
+  // agregar un producto al carrito con el id seleccionado.
+
+  const cartId = parseInt(req.params.cid);
+  const productId = parseInt(req.params.pid);
+  const quantity = parseInt(req.query.quantity) || 1; 
+
   try {
-    const update  = await cartsManager.updateProduct(cartId, productId,quantity)
-    res.json(update.products)
-  }catch(error){
-    console.error("Error al agregar producto al carrito", error)
-    res.status(500).json({error: "error en el servidor"});
+    const update = await cartsManager.updateProduct(cartId, productId, quantity);
+    res.json(update.products);
+  } catch (error) {
+    console.error("Error al agregar producto al carrito", error);
+    res.status(500).json({ error: "error en el servidor" });
   }
-})
+});
 
 module.exports = router;

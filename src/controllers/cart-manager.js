@@ -71,21 +71,28 @@ async getProductById(id) {
   }
 
   //agrega un producto al array de productos del carrito seleccionado 
-  async updateProduct(cartId, productId, quantity=1) {
+  async updateProduct(cartId, productId, quantity = 1) {
     const cart = await this.getProductById(parseInt(cartId));
-    const product = cart.products.find(p => p.id === productId)
-
-    
-      if (product) {
-        product.quantity += quantity
+    const product = cart.products.find(p => p.id === parseInt(productId));
+  
+    if (product) {
+      if (quantity) {
+        product.quantity += parseInt(quantity);
       } else {
-        cart.products.push({id: productId,quantity})
+        // No es necesario verificar si 'quantity' existe aquí, ya que ya lo has hecho arriba
+        cart.products.push({
+          "id": productId,
+          "quantity": parseInt(quantity)
+        });
       }
-
+  
       await this.guardarArchivo();
-      return cart;
+      return cart.products;
+    } else {
+      console.log("Producto no encontrado en el carrito");
+      return null;  // Puedes manejar este caso según tus necesidades
+    }
   }
-
 
 
   // Método para leer el archivo
