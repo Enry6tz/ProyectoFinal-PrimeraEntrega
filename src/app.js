@@ -8,6 +8,7 @@ const PUERTO = 8080;
 const productsRouter = require("./routes/products.router");
 const cartsRouter = require("./routes/carts.router");
 
+//configuracion necesaria para utilizar archivos JSON
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(bodyParser.json());

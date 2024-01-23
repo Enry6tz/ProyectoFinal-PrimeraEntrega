@@ -1,167 +1,123 @@
 [
   {
+    "id": 1,
+    "title": "Barrita de Cereal A",
+    "description": "Deliciosa barrita de cereal sabor a frutas",
+    "price": 1.99,
+    "thumbnails": ["barrita_a.jpg"],
+    "code": "BC001",
+    "stock": 50,
+    "status": true,
+    "category": "Frutas"
+  },
+  {
     "id": 2,
-    "title": "Producto 2",
-    "description": "Descripción del producto 2",
-    "price": 29.99,
-    "thumbnails": [
-      "url4",
-      "url5",
-      "url6"
-    ],
-    "code": "P002",
+    "title": "Barrita de Cereal B",
+    "description": "Barrita de avena con trozos de chocolate",
+    "price": 2.49,
+    "thumbnails": ["barrita_b.jpg"],
+    "code": "BC002",
     "stock": 30,
-    "cartegoty": "Ropa",
-    "status": "Agotado"
+    "status": true,
+    "category": "Chocolate"
   },
   {
     "id": 3,
-    "title": "Producto 3",
-    "description": "Descripción del producto 3",
-    "price": 49.99,
-    "thumbnails": [
-      "url7",
-      "url8",
-      "url9"
-    ],
-    "code": "P003",
-    "stock": 100,
-    "cartegoty": "Hogar",
-    "status": "Disponible"
+    "title": "Barrita de Cereal C",
+    "description": "Barrita energética con frutos secos",
+    "price": 2.99,
+    "thumbnails": ["barrita_c.jpg"],
+    "code": "BC003",
+    "stock": 20,
+    "status": true,
+    "category": "Frutos secos"
   },
   {
     "id": 4,
-    "title": "Producto 4",
-    "description": "Descripción del producto 4",
-    "price": 39.99,
-    "thumbnails": [
-      "url10",
-      "url11",
-      "url12"
-    ],
-    "code": "P004",
-    "stock": 20,
-    "cartegoty": "Juguetes",
-    "status": "Disponible"
+    "title": "Barrita de Cereal D",
+    "description": "Barrita de avena y miel",
+    "price": 1.79,
+    "thumbnails": ["barrita_d.jpg"],
+    "code": "BC004",
+    "stock": 45,
+    "status": true,
+    "category": "Miel"
   },
   {
     "id": 5,
-    "title": "Producto 5",
-    "description": "Descripción del producto 5",
-    "price": 59.99,
-    "thumbnails": [
-      "url13",
-      "url14",
-      "url15"
-    ],
-    "code": "P005",
-    "stock": 75,
-    "cartegoty": "Electrodomésticos",
-    "status": "Agotado"
+    "title": "Barrita de Cereal E",
+    "description": "Barrita con arándanos y almendras",
+    "price": 2.29,
+    "thumbnails": ["barrita_e.jpg"],
+    "code": "BC005",
+    "stock": 25,
+    "status": true,
+    "category": "Arándanos"
   },
   {
     "id": 6,
-    "title": "Producto 6",
-    "description": "Descripción del producto 6",
-    "price": 24.99,
-    "thumbnails": [
-      "url16",
-      "url17",
-      "url18"
-    ],
-    "code": "P006",
-    "stock": 10,
-    "cartegoty": "Deportes",
-    "status": "Disponible"
+    "title": "Barrita de Cereal F",
+    "description": "Barrita de quinoa y frutas tropicales",
+    "price": 3.49,
+    "thumbnails": ["barrita_f.jpg"],
+    "code": "BC006",
+    "stock": 15,
+    "status": true,
+    "category": "Frutas tropicales"
   },
   {
     "id": 7,
-    "title": "Producto 7",
-    "description": "Descripción del producto 7",
-    "price": 34.99,
-    "thumbnails": [
-      "url19",
-      "url20",
-      "url21"
-    ],
-    "code": "P007",
-    "stock": 50,
-    "cartegoty": "Libros",
-    "status": "Agotado"
+    "title": "Barrita de Cereal G",
+    "description": "Barrita con semillas de chía y yogurt",
+    "price": 2.79,
+    "thumbnails": ["barrita_g.jpg"],
+    "code": "BC007",
+    "stock": 35,
+    "status": true,
+    "category": "Semillas de chía"
   },
   {
     "id": 8,
-    "title": "Producto 8",
-    "description": "Descripción del producto 8",
-    "price": 44.99,
-    "thumbnails": [
-      "url22",
-      "url23",
-      "url24"
-    ],
-    "code": "P008",
-    "stock": 15,
-    "cartegoty": "Moda",
-    "status": "Disponible"
+    "title": "Barrita de Cereal H",
+    "description": "Barrita integral con frutas deshidratadas",
+    "price": 3.99,
+    "thumbnails": ["barrita_h.jpg"],
+    "code": "BC008",
+    "stock": 10,
+    "status": true,
+    "category": "Frutas deshidratadas"
   },
   {
     "id": 9,
-    "title": "Producto 9",
-    "description": "Descripción del producto 9",
-    "price": 54.99,
-    "thumbnails": [
-      "url25",
-      "url26",
-      "url27"
-    ],
-    "code": "P009",
+    "title": "Barrita de Cereal I",
+    "description": "Barrita sin azúcar añadido, ideal para dietas",
+    "price": 2.99,
+    "thumbnails": ["barrita_i.jpg"],
+    "code": "BC009",
     "stock": 40,
-    "cartegoty": "Música",
-    "status": "Agotado"
+    "status": true,
+    "category": "Sin azúcar"
   },
   {
     "id": 10,
-    "title": "Producto 10",
-    "description": "Descripción del producto 10",
-    "price": 29.99,
-    "thumbnails": [
-      "url28",
-      "url29",
-      "url30"
-    ],
-    "code": "P010",
-    "stock": 60,
-    "cartegoty": "Herramientas",
-    "status": "Disponible"
+    "title": "Barrita de Cereal J",
+    "description": "Barrita con trozos de frutas exóticas",
+    "price": 4.49,
+    "thumbnails": ["barrita_j.jpg"],
+    "code": "BC010",
+    "stock": 18,
+    "status": true,
+    "category": "Frutas exóticas"
   },
   {
     "id": 11,
-    "title": "Producto 11",
-    "description": "Descripción del producto 11",
-    "price": 19.99,
-    "thumbnails": [
-      "url31",
-      "url32",
-      "url33"
-    ],
-    "code": "P011",
-    "stock": 25,
-    "cartegoty": "Muebles",
-    "status": "Disponible"
-  },
-  {
-    "id": 12,
-    "title": "Producto 12",
-    "description": "Descripción del producto 12",
-    "price": 39.99,
-    "thumbnails": [
-      "url34",
-      "url35",
-      "url36"
-    ],
-    "code": "P012",
-    "stock": 45,
-    "cartegoty": "Jardín",
-    "status": "Agotado"
+    "title": "Barrita de Cereal k",
+    "description": "Barrita con trozos de cítricos",
+    "price": 5.49,
+    "thumbnails": ["barrita_k.jpg"],
+    "code": "BC011",
+    "stock": 18,
+    "status": true,
+    "category": "Cítricos"
   }
 ]

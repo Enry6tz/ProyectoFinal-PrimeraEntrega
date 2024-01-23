@@ -1,4 +1,4 @@
-// Desafio 2
+
 const fs = require("fs").promises;
 
 class CartManager {
@@ -9,93 +9,114 @@ class CartManager {
 
     // Inicializa el array de productos y la ruta del archivo
     this.path = path;
-    this.products = path ? this.leerArchivo() : [ ];
-    // Inicializa la instancia, cargando productos desde el archivo
+    this.carts = path ? this.readFile() : [];
     this.initialize();
-    
-    }
+
+  }
 
   // Método para inicializar la instancia, cargando productos desde el archivo
   async initialize() {
-    await this.loadProductsFromDisk();
+    await this.loadCartsFromDisk();
   }
 
   // Método para cargar productos desde el archivo
-  async loadProductsFromDisk() {
+  async loadCartsFromDisk() {
     try {
       const data = await fs.readFile(this.path, 'utf-8');
-      this.products = JSON.parse(data);
+      this.carts = JSON.parse(data);
       // Actualiza el último id asignado basándose en los productos cargados
-      CartManager.ultId = this.products.reduce((maxId, product) => Math.max(maxId, product.id), 0) + 1;
+      CartManager.ultId = this.carts.reduce((maxId, product) => Math.max(maxId, product.id), 0) + 1;
     } catch (error) {
       // Si hay un error al leer o analizar el archivo, se ignora y se continúa con un array vacío
-      this.products = [];
+      this.carts = [];
     }
   }
-  // Método para agregar un nuevo producto al array y guardar en el archivo
-  async addProduct() {
-    // Crear nuevo carrito con id autoincrementable
+  
+  async createCart() {
     const newCart = {
       id: ++CartManager.ultId,
-      products: [],
+      products: []
     };
-    // Agregar producto al array
-    this.products.push(newCart);
-    // Guardar el array actualizado en el archivo
-    await this.guardarArchivo();
-    console.log("Producto agregado:", newProduct);
+
+    this.carts.push(newCart);
+    await this.saveFile();
+    console.log("Producto agregado:", newCart);
   }
 
-// Método para obtener todos los productos
-getProducts() {
-  console.log("getProducts:", this.products);
-  return this.products;
-}
-
+  getCarts() {
+    console.log("getCarts:", this.carts);
+    return this.carts;
+  }
   // Método para obtener un carrito por su id
-async getProductById(id) {
+  async getCartsById(id) {
     try {
-      const arrayProductos = await this.leerArchivo();
-      id = parseInt(id);
-      const buscado = arrayProductos.find(item => item.id === id);
+      const arrCarts = await this.readFile();
+      const buscado = arrCarts.find(item => item.id === id);
 
       if (!buscado) {
         console.log("Producto no encontrado");
+        return false;
       } else {
         console.log("Producto encontrado:", buscado);
-        return buscado.products;
+        return buscado;
       }
     } catch (error) {
       console.log("Error al leer el archivo", error);
     }
   }
 
-  //agrega un producto al array de productos del carrito seleccionado 
-  async updateProduct(cartId, productId, quantity = 1) {
-    const cart = await this.getProductById(parseInt(cartId));
-    const product = cart.products.find(p => p.id === parseInt(productId));
-  
-    if (product) {
-      if (quantity) {
-        product.quantity += parseInt(quantity);
+// Método para actualizar un producto por su id
+async updateProduct(cartId, proId, quantity) {
+  try {
+      const carts = await this.readFile();
+      const indexCart = carts.findIndex(item => item.id === cartId);
+      if (indexCart !== -1) {
+          const products = carts[indexCart].products;
+          const indexProduct = products.findIndex(item => item.product === proId);
+
+          let updatedProducts;
+          if (indexProduct !== -1) {
+              updatedProducts = this.reformatProduct(proId, quantity, products);
+          } else {
+              updatedProducts = [...products, { product: proId, quantity }];
+          }
+          //se sobrescribe la posicion en el array
+          carts[indexCart].products = updatedProducts;
+          await this.saveFile(carts);
+          console.log("Producto actualizado:", updatedProducts);
+          return updatedProducts;
       } else {
-        cart.products.push({
-          "id": productId,
-          "quantity": parseInt(quantity)
-        });
+          console.log("No se encontró el carrito, no se puede actualizar");
+          return false;
       }
-  
-      await this.guardarArchivo();
-      return cart.products;
-    } else {
-      console.log("Producto no encontrado en el carrito");
-      return null;  
-    }
+  } catch (error) {
+      console.log("Error al actualizar el producto", error);
+  }
+}
+
+reformatProduct(proId, quantity, products) {
+  const index = products.findIndex(item => item.product === proId);
+  const updatedProduct = {
+      "product": proId,
+      "quantity": index !== -1 ? quantity : 1,
+  };
+
+  if (index !== -1) {
+      // Si el producto ya existe, actualiza la cantidad
+      products.splice(index, 1, updatedProduct);
+  } else {
+      // Si el producto no existe, agrégalo
+      products.push(updatedProduct);
   }
 
+  return products;
+}
+
+ 
 
   // Método para leer el archivo
-  async leerArchivo() {
+  async readFile() {
+
     try {
       const respuesta = await fs.readFile(this.path, "utf-8");
       const arrayProductos = JSON.parse(respuesta);
@@ -103,10 +124,12 @@ async getProductById(id) {
     } catch (error) {
       console.log("Error al leer un archivo", error);
     }
+
   }
 
+
   // Método para guardar el array actualizado en el archivo
-  async guardarArchivo(arrayProductos = this.products) {
+  async saveFile(arrayProductos = this.carts) {
     try {
       await fs.writeFile(this.path, JSON.stringify(arrayProductos, null, 2));
     } catch (error) {
@@ -114,5 +137,5 @@ async getProductById(id) {
     }
   }
 }
-// Exporta la clase CartManager
+
 module.exports = CartManager;
